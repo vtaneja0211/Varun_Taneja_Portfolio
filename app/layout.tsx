@@ -11,8 +11,19 @@ import {
   Email,
   PhoneIcon,
 } from "../components/icons";
+import Image from "next/image";
 
-const projects = [
+// Explicitly define the type for the projects array
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  githubLink?: string;
+  websiteLink?: string;
+}
+
+const projects: Project[] = [
   {
     id: 1,
     title: "Music & Happiness",
@@ -133,12 +144,7 @@ function AboutSection() {
   );
 }
 
-
-
-
-
-
-function ProjectsSection({ projects }: { projects: typeof projects }) {
+function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section id="projects">
       <div className="hidden sm:block mt-12" />
@@ -157,7 +163,7 @@ function ProjectsSection({ projects }: { projects: typeof projects }) {
   );
 }
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
@@ -165,10 +171,13 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
     >
       <div className="flex-1 hidden sm:block">
         <div className="rounded-lg">
-          <img
+          <Image
             src={project.imageUrl}
             alt={project.title}
+            width={500}
+            height={300}
             className={project.id < 4 ? "w-full h-full" : "h-72 rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")} // Add unoptimized for GIFs
           />
         </div>
       </div>
@@ -187,7 +196,7 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
   );
 }
 
-function ProjectCardReversed({ project }: { project: typeof projects[0] }) {
+function ProjectCardReversed({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
@@ -206,10 +215,13 @@ function ProjectCardReversed({ project }: { project: typeof projects[0] }) {
       </div>
       <div className="flex-1 hidden sm:block">
         <div className="overflow-hidden rounded-lg">
-          <img
+          <Image
             src={project.imageUrl}
             alt={project.title}
+            width={500}
+            height={300}
             className={project.id < 4 ? "w-full h-full" : "object-none h-72 rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")} // Add unoptimized for GIFs
           />
         </div>
       </div>
@@ -217,7 +229,7 @@ function ProjectCardReversed({ project }: { project: typeof projects[0] }) {
   );
 }
 
-function ProjectLinks({ project }: { project: typeof projects[0] }) {
+function ProjectLinks({ project }: { project: Project }) {
   return (
     <div className="flex space-x-2 justify-center">
       {project.githubLink && (
@@ -241,6 +253,7 @@ function ProjectLinks({ project }: { project: typeof projects[0] }) {
     </div>
   );
 }
+
 
 function WorkExperienceSection() {
   const experiences = [
