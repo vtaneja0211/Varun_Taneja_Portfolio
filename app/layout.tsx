@@ -114,14 +114,14 @@ function AboutSection() {
           persevere through mentally challenging situations – a skill I consider invaluable in fast-paced environments.
         </p>
         <p>
-          My two years of mandatory conscription in Singapore's armed forces further honed my teamwork and discipline, attributes I carried with 
+          My two years of mandatory conscription in Singapore&apos;s armed forces further honed my teamwork and discipline, attributes I carried with 
           me when I joined the club boxing team at Notre Dame. These qualities, along with my technical knowledge in software engineering, gained 
           through coursework and hands-on experience at <strong>Vena Energy</strong> in <strong>Cloud Computing</strong>, <strong>Data Engineering</strong> at <strong>Partior</strong>
           , and <strong>AI research</strong> at <strong>Notre Dame</strong>, are integral to my professional development.
         </p>
         <p>
           I expect to graduate in May 2025, and I am currently interested in full-time positions. I am excited to contribute my unique background, 
-          technical expertise, and dedication to teamwork and discipline to your company's team.
+          technical expertise, and dedication to teamwork and discipline to your company&apos;s team.
         </p>
         <p>
           Here is my<a href="/Varun_Taneja_Resume.pdf" download>
