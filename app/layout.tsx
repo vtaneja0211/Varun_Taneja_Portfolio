@@ -138,7 +138,7 @@ function AboutSection() {
           and connecting with individuals from various backgrounds.
         </p>
         <p>
-          At Notre Dame, I was an active member of the club golf team, where I play competitive golf and proudly represent our university 
+          At Notre Dame, I was the Vice President of the club golf team, where I play competitive golf and proudly represent our university 
           at both regional and national levels. Golf has instilled in me the ability to confront and overcome adversity, teaching me to 
           persevere through mentally challenging situations – a skill I consider invaluable in fast-paced environments.
         </p>
