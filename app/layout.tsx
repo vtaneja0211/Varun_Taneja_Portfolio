@@ -25,30 +25,30 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 1,
-    title: "Music & Happiness",
+    id: 7,
+    title: "Beating the Bookmakers - NFL Game Binary Classification",
     description:
-      "Tracks Spotify user trends by country and links them to the happiness index, education levels, and GDP of the country. The data gives indications of the correlation between artist, genre, and socioeconomic standards and indicators across the world, over time.",
-    imageUrl: "/music.jpg",
-    githubLink: "https://github.com/AntonioKaram/MusicData",
-    websiteLink: "https://music-and-happiness.vercel.app/",
-  },
-  {
-    id: 2,
-    title: "Linear Shift Feedback Register Chip",
-    description:
-      "Proposed, designed, tested, and synthesized an 8-bit LFSR chip in Verilog for the Google-Sponsored eFabless digital GF180nm shuttle, passing the Multi-Project Wafer and Tapeout tests.",
-    imageUrl: "/lfsr.png",
-    githubLink: "https://github.com/AntonioKaram/Final-Project-LFSR",
-    websiteLink: "https://repositories.efabless.com/akaram/nd-cool-ranch",
-  },
-  {
-    id: 3,
-    title: "Multithreaded HTTP Client/Server",
-    description:
-      "Designed and tested a client that makes parallel HTTP requests and a Pub/Sub Server with channels and conversations in Python, Bash, and C/C++ using networking, system calls, and sockets.",
-    imageUrl: "/cliserv.png",
+      "Co-led a data-driven NFL prediction project: assembled and cleaned a dataset of 3,593 games via the ESPN API, engineered features—including KNN-imputed missing values, rolling 3–5-game averages, and betting-market indicators—and evaluated seven machine-learning models (Naïve Bayes, Decision Tree, SVM, Random Forest, Neural Network, Gradient Boosting, XGBoost) plus a voting ensemble using stratified 5-fold cross-validation; XGBoost achieved top performance (precision 0.811, recall 0.853, accuracy 0.809, F1 0.831, AUC 0.884), and simulated betting strategies demonstrated a 12× bankroll increase with fixed stakes and a 3,544× return under reinvestment.",
+    imageUrl: "/nfl_predictor.png",
     githubLink: "",
+    websiteLink: "",
+  },
+  {
+    id: 6,
+    title: "NavigAIte - An AI-Enabled Travel Planner",
+    description:
+      "Built a full-stack application augmented by AI to guide users through the travel planning process: conducted contextual inquiries with five users to map key pain points and define three AI-driven itinerary modes; designed a JSON-schema/chain-of-thought framework for LLM-based, on-demand personalized travel recommendations; and implemented a Next.js/React frontend alongside a Python backend integrating travel APIs with Llama-3.3-7b to generate real-time, budget-aware itineraries.",
+    imageUrl: "/navigaite.gif",
+    githubLink: "https://github.com/petermh12/navigAIte",
+    websiteLink: "",
+  },
+  {
+    id: 5,
+    title: "Windows Freecell Solver",
+    description:
+      "Reverse-engineered Windows XP Freecell using IDA Pro and OllyDbg for dynamic and static analysis to locate card state memory. Implemented BFS, DFS, and A* search algorithms for optimal win strategies and built a Python GUI to guide users.",
+    imageUrl: "/freecell.png",
+    githubLink: "https://github.com/AntonioKaram/Freecell-AI-Solver",
     websiteLink: "",
   },
   {
@@ -61,13 +61,31 @@ const projects: Project[] = [
     websiteLink: "",
   },
   {
-    id: 5,
-    title: "Windows Freecell Solver",
+    id: 3,
+    title: "Multithreaded HTTP Client/Server",
     description:
-      "Reverse-engineered Windows XP Freecell using IDA Pro and OllyDbg for dynamic and static analysis to locate card state memory. Implemented BFS, DFS, and A* search algorithms for optimal win strategies and built a Python GUI to guide users.",
-    imageUrl: "/freecell.png",
-    githubLink: "https://github.com/AntonioKaram/Freecell-AI-Solver",
+      "Designed and tested a client that makes parallel HTTP requests and a Pub/Sub Server with channels and conversations in Python, Bash, and C/C++ using networking, system calls, and sockets.",
+    imageUrl: "/cliserv.png",
+    githubLink: "",
     websiteLink: "",
+  },
+  {
+    id: 2,
+    title: "Linear Shift Feedback Register Chip",
+    description:
+      "Proposed, designed, tested, and synthesized an 8-bit LFSR chip in Verilog for the Google-Sponsored eFabless digital GF180nm shuttle, passing the Multi-Project Wafer and Tapeout tests.",
+    imageUrl: "/lfsr.png",
+    githubLink: "https://github.com/AntonioKaram/Final-Project-LFSR",
+    websiteLink: "https://repositories.efabless.com/akaram/nd-cool-ranch",
+  },
+  {
+    id: 1,
+    title: "Music & Happiness",
+    description:
+      "Tracks Spotify user trends by country and links them to the happiness index, education levels, and GDP of the country. The data gives indications of the correlation between artist, genre, and socioeconomic standards and indicators across the world, over time.",
+    imageUrl: "/music.jpg",
+    githubLink: "https://github.com/AntonioKaram/MusicData",
+    websiteLink: "https://music-and-happiness.vercel.app/",
   },
 ];
 
@@ -112,15 +130,15 @@ function AboutSection() {
       <hr className="my-4" />
       <div className="text-sm prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200 max-w-full">
         <p>
-          I am <strong>Varun Taneja</strong>, a Senior at the <strong>University of Notre Dame</strong> majoring in 
-          <strong> Computer Engineering</strong> with a concentration in <strong>cybersecurity</strong> and <strong>AI</strong>.
+          I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelors of Science in 
+          <strong> Computer Engineering</strong> and a concentration in <strong>cybersecurity</strong> and <strong>AI</strong>.
         </p>
         <p>
           My diverse background, growing up in Singapore, has equipped me with the valuable skill of bridging cultural divides 
           and connecting with individuals from various backgrounds.
         </p>
         <p>
-          At Notre Dame, I am an active member of the club golf team, where I play competitive golf and proudly represent our university 
+          At Notre Dame, I was an active member of the club golf team, where I play competitive golf and proudly represent our university 
           at both regional and national levels. Golf has instilled in me the ability to confront and overcome adversity, teaching me to 
           persevere through mentally challenging situations – a skill I consider invaluable in fast-paced environments.
         </p>
@@ -131,7 +149,7 @@ function AboutSection() {
           , and <strong>AI research</strong> at <strong>Notre Dame</strong>, are integral to my professional development.
         </p>
         <p>
-          I expect to graduate in May 2025, and I am currently interested in full-time positions. I am excited to contribute my unique background, 
+          I am currently interested in full-time positions. I am excited to contribute my unique background, 
           technical expertise, and dedication to teamwork and discipline to your company&apos;s team.
         </p>
         <p>
@@ -147,10 +165,10 @@ function AboutSection() {
 function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section id="projects">
-      <div className="hidden sm:block mt-12" />
+      <div className="hidden sm:block mt-8" />
       <h1 className="font-bold text-2xl font-serif">Projects</h1>
-      <hr className="my-4" />
-      <div className="grid grid-cols-2 gap-8">
+      <hr className="my-3" />
+      <div className="flex flex-col gap-4">
         {projects.map((project) =>
           project.id % 2 === 0 ? (
             <ProjectCard key={project.id} project={project} />
@@ -163,21 +181,25 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
   );
 }
 
+// Update ProjectCard and ProjectCardReversed to size by text, not image
+// Remove fixed height and let content dictate box size
+
 function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="bg-neutral-100 dark:bg-[#121212] h-auto flex flex-col sm:flex-row rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all overflow-hidden"
+      className="bg-neutral-100 dark:bg-[#121212] flex flex-col sm:flex-row rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all overflow-hidden"
     >
-      <div className="flex-1 hidden sm:block">
+      <div className="flex-1 hidden sm:flex self-stretch items-center justify-center">
         <div className="rounded-lg">
           <Image
             src={project.imageUrl}
             alt={project.title}
             width={500}
             height={300}
-            className={project.id < 4 ? "w-full h-full" : "h-72 rounded-lg"}
-            unoptimized={project.imageUrl.endsWith(".gif")} // Add unoptimized for GIFs
+            className={project.id < 4 ? "w-full" : "rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")}
+            style={{ maxHeight: 200, objectFit: "contain" }}
           />
         </div>
       </div>
@@ -200,7 +222,7 @@ function ProjectCardReversed({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="bg-white h-auto flex flex-col sm:flex-row dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all justify-between overflow-hidden"
+      className="bg-white flex flex-col sm:flex-row dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all justify-between overflow-hidden"
     >
       <div className="flex-1">
         <div className="flex flex-col text-center p-3">
@@ -213,21 +235,23 @@ function ProjectCardReversed({ project }: { project: Project }) {
           <ProjectLinks project={project} />
         </div>
       </div>
-      <div className="flex-1 hidden sm:block">
+      <div className="flex-1 hidden sm:flex self-stretch items-center justify-center">
         <div className="overflow-hidden rounded-lg">
           <Image
             src={project.imageUrl}
             alt={project.title}
             width={500}
             height={300}
-            className={project.id < 4 ? "w-full h-full" : "object-none h-72 rounded-lg"}
-            unoptimized={project.imageUrl.endsWith(".gif")} // Add unoptimized for GIFs
+            className={project.id < 4 ? "w-full" : "rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")}
+            style={{ maxHeight: 200, objectFit: "contain" }}
           />
         </div>
       </div>
     </div>
   );
 }
+
 
 function ProjectLinks({ project }: { project: Project }) {
   return (
@@ -264,9 +288,8 @@ function WorkExperienceSection() {
       link: "http://yes-lab.org/",
       logo: "/ND_Logo.png",
       tasks: [
-        "Worked with Professor Ye's lab on Multi-objective Personalized Health-aware Food Recommendation System with LLM-enhanced Interpretation project.",
-        "Implemented predetermined baseline models such as NCGF and HAFR using Pytorch and graph learning in Python.",
-        "Paper was submitted to the KDD 2025 ADS Track for the August 2024 Cycle.",
+        `Collaborated on "Multi-objective Personalized Health-aware Food Recommendation System with LLM-enhanced Interpretation" project at Yes Lab at Notre Dame, culminating in a paper submission to the KDD 2025 ADS Track.`,
+        "Developed and implemented baseline models (NCGF and HAFR) using Python and PyTorch"
       ],
     },
     {
@@ -276,10 +299,10 @@ function WorkExperienceSection() {
       link: "https://www.partior.com/",
       logo: "/Partior_logo.png",
       tasks: [
-        "Completed Google Cloud Skills Boost - Introduction To Generative AI, as training for the use of Vertex AI for enterprise.",
-        "Generated realistic mock billing data with natural growth and ingested it into GCS for dashboarding using Looker Studio.",
-        "Conducted a comprehensive analysis of various prompting techniques, including Zero-shot, prompt-chaining, and Retrieval Augmented Generation, to optimize business data retrieval methods.",
-        "Developed Python program to web scrape business data from PDFs using Google Gemini API and Google Vertex AI.",
+        "Completed Google Cloud Skills Boost: Introduction to Generative AI, leveraging Vertex AI for enterprise",
+        "Generated realistic mock billing data with natural growth and ingested it into GCS for Looker Studio dashboards.",
+        "Conducted comprehensive analysis of prompting techniques—including zero-shot and prompt-chaining—to optimize business data retrieval methods.",
+        "Developed a Python program to extract business data from PDFs using Google’s Gemini API and Vertex AI.",
       ],
     },
     {
@@ -301,9 +324,9 @@ function WorkExperienceSection() {
       link: "https://www.venaenergy.com/",
       logo: "Vena_logo.png",
       tasks: [
-        "Worked on code migration from NodeJs to Python for Wind and Solar power plant SCADA Data.",
-        "Created and implemented real-time Python program to update data on Google Firebase Server every minute.",
-        "Wrote Python script to store long-term BigQuery data on Google Cloud Platform.",
+        "Migrated code from Node.js to Python for SCADA data processing in wind and solar power plants.",
+        "Developed and deployed a real-time Python application that updated Google Firebase data every minute",
+        "Created a Python script to archive long-term BigQuery data on GCP.",
       ],
     },
     {
@@ -313,8 +336,7 @@ function WorkExperienceSection() {
       link: "https://cse.nd.edu/",
       logo: "/ND_Logo.png",
       tasks: [
-        "Helped students understand boolean algebra, assembly language, Logisim, and Verilog concepts during office hours and studio sessions.",
-        "Assisted Dr. Aaron Dingler with grading homework assignments.",
+        "Facilitated student comprehension of Boolean algebra, Assembly language, Logisim and Verilog during office hours and studio sessions.",
       ],
     },
     {
@@ -336,10 +358,9 @@ function WorkExperienceSection() {
       link: "https://www.mindef.gov.sg/web/portal/mindef/home",
       logo: "SAF_logo.png",
       tasks: [
-        "Conducted all guardroom operations in conjunction with Sergeant in charge, promoted to Corporal Rank.",
-        "Responsibilities included issuing of SAR21 assault rifles, issuing camp clearance, and schedule planning.",
-        "Facilitated vehicle access into the camp and conducted vehicle checks in accordance with military law.",
-        "Expedited access for cleared individuals into the camp exchanging identity cards for camp passes.",
+        "Led guardroom operations alongside the Sergeant—managing SAR21 rifle issuance, camp clearances, and scheduling—earning promotion to Corporal",
+        "Enforced military law by overseeing vehicle access and conducting systematic vehicle checks.",
+        "Streamlined entry processes by verifying identities and exchanging ID cards for camp passes."
       ],
     },
   ];
