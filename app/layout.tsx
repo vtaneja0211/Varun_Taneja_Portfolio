@@ -38,7 +38,7 @@ const projects: Project[] = [
     title: "NavigAIte - An AI-Enabled Travel Planner",
     description:
       "Built a full-stack application augmented by AI to guide users through the travel planning process: conducted contextual inquiries with five users to map key pain points and define three AI-driven itinerary modes; designed a JSON-schema/chain-of-thought framework for LLM-based, on-demand personalized travel recommendations; and implemented a Next.js/React frontend alongside a Python backend integrating travel APIs with Llama-3.3-7b to generate real-time, budget-aware itineraries.",
-    imageUrl: "/navigaite.gif",
+    imageUrl: "/navigAIte.png",
     githubLink: "https://github.com/petermh12/navigAIte",
     websiteLink: "",
   },
