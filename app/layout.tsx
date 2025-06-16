@@ -106,11 +106,11 @@ export default function RootLayout({
         "text-black bg-white dark:text-white dark:bg-[#121212] font-mono"
       )}
     >
-      <body className="antialiased px-10 py-20">
+      <body className="antialiased px-4 sm:px-10 py-10 sm:py-20">
         <Navbar />
-        <div className="flex">
+        <div className="flex flex-col sm:flex-row">
           <Sidebar />
-          <main className="flex-auto pl-20 min-w-0 mt-6 md:mt-0 flex flex-col">
+          <main className="flex-auto sm:pl-20 min-w-0 mt-6 md:mt-0 flex flex-col">
             {children}
             <AboutSection />
             <ProjectsSection projects={projects} />
@@ -166,7 +166,17 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
     <section id="projects">
       <div className="hidden sm:block mt-8" />
-      <h1 className="font-bold text-2xl font-serif">Projects</h1>
+      <div className="flex items-center gap-2">
+        <h1 className="font-bold text-2xl font-serif">Projects</h1>
+        <a
+          href="https://github.com/vtaneja0211"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-neutral-500 hover:text-green-600 transition-colors"
+        >
+          <GitHubIcon />
+        </a>
+      </div>
       <hr className="my-3" />
       <div className="flex flex-col gap-4">
         {projects.map((project) =>
@@ -188,8 +198,21 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="bg-neutral-100 dark:bg-[#121212] flex flex-col sm:flex-row rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all overflow-hidden"
+      className="bg-neutral-100 dark:bg-[#121212] flex flex-col sm:flex-row rounded-lg shadow-sm hover:shadow-xl p-4 sm:p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all overflow-hidden"
     >
+      <div className="flex-1 flex sm:hidden self-stretch items-center justify-center mb-4">
+        <div className="rounded-lg w-full">
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            width={500}
+            height={300}
+            className={project.id < 4 ? "w-full" : "rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")}
+            style={{ maxHeight: 200, objectFit: "contain" }}
+          />
+        </div>
+      </div>
       <div className="flex-1 hidden sm:flex self-stretch items-center justify-center">
         <div className="rounded-lg">
           <Image
@@ -204,11 +227,11 @@ function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
       <div className="flex-1">
-        <div className="flex flex-col h-full text-center p-3">
-          <h3 className="text-xl font-bold mb-2 text-green-600">
+        <div className="flex flex-col h-full text-center p-2 sm:p-3">
+          <h3 className="text-lg sm:text-xl font-bold mb-2 text-green-600">
             {project.title}
           </h3>
-          <p className="text-sm text-gray-600 dark:text-neutral-100 mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-neutral-100 mb-4">
             {project.description}
           </p>
           <ProjectLinks project={project} />
@@ -222,17 +245,30 @@ function ProjectCardReversed({ project }: { project: Project }) {
   return (
     <div
       key={project.id}
-      className="bg-white flex flex-col sm:flex-row dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all justify-between overflow-hidden"
+      className="bg-white flex flex-col sm:flex-row dark:bg-[#121212] rounded-lg shadow-sm hover:shadow-xl p-4 sm:p-6 w-full border border-neutral-200 dark:border-neutral-800 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 transition-all justify-between overflow-hidden"
     >
       <div className="flex-1">
-        <div className="flex flex-col text-center p-3">
-          <h3 className="text-xl font-mono font-bold mb-2 text-green-600">
+        <div className="flex flex-col text-center p-2 sm:p-3">
+          <h3 className="text-lg sm:text-xl font-mono font-bold mb-2 text-green-600">
             {project.title}
           </h3>
-          <p className="text-sm text-gray-600 dark:text-neutral-100 mb-4">
+          <p className="text-xs sm:text-sm text-gray-600 dark:text-neutral-100 mb-4">
             {project.description}
           </p>
           <ProjectLinks project={project} />
+        </div>
+      </div>
+      <div className="flex-1 flex sm:hidden self-stretch items-center justify-center mt-4">
+        <div className="overflow-hidden rounded-lg w-full">
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            width={500}
+            height={300}
+            className={project.id < 4 ? "w-full" : "rounded-lg"}
+            unoptimized={project.imageUrl.endsWith(".gif")}
+            style={{ maxHeight: 200, objectFit: "contain" }}
+          />
         </div>
       </div>
       <div className="flex-1 hidden sm:flex self-stretch items-center justify-center">
@@ -302,7 +338,7 @@ function WorkExperienceSection() {
         "Completed Google Cloud Skills Boost: Introduction to Generative AI, leveraging Vertex AI for enterprise",
         "Generated realistic mock billing data with natural growth and ingested it into GCS for Looker Studio dashboards.",
         "Conducted comprehensive analysis of prompting techniques—including zero-shot and prompt-chaining—to optimize business data retrieval methods.",
-        "Developed a Python program to extract business data from PDFs using Google’s Gemini API and Vertex AI.",
+        "Developed a Python program to extract business data from PDFs using Google's Gemini API and Vertex AI.",
       ],
     },
     {
