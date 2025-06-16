@@ -102,9 +102,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx(
-        "text-black bg-white dark:text-white dark:bg-[#121212] font-mono"
-      )}
+      className="text-white bg-[#121212] font-mono"
     >
       <body className="antialiased px-4 sm:px-10 py-10 sm:py-20">
         <Navbar />
