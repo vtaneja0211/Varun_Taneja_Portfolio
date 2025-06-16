@@ -409,7 +409,7 @@ export default function Navbar() {
         <br />
         <h1 className="text-xl">Contact Me</h1>
         <br />
-        <hr />
+        <hr className="border-black dark:border-white" />
         <div className="hidden sm:block">
           <br />
         </div>
@@ -421,7 +421,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://www.linkedin.com/in/varuntaneja7/"
-                className="flex h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
               >
                 <div className="flex items-center">
                   <LinkedIN />
@@ -434,7 +434,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="https://github.com/vtaneja0211"
-                className="flex h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
               >
                 <div className="flex items-center">
                   <GitHubIcon />
@@ -447,7 +447,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="tel:+12694798385"
-                className="flex h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
               >
                 <div className="flex items-center">
                   <USAFlagIcon />
@@ -459,7 +459,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="tel:+6597572510"
-                className="flex h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
               >
                 <div className="flex items-center">
                   <SingaporeFlagIcon />
@@ -472,7 +472,7 @@ export default function Navbar() {
                 rel="noopener noreferrer"
                 target="_blank"
                 href="mailto:varuntaneja0211@gmail.com"
-                className="flex h-full w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
                 download
               >
                 <div className="flex items-center">

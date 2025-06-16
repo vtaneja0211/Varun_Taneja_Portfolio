@@ -125,7 +125,7 @@ function AboutSection() {
     <section id="about" className="max-w-screen-lg">
       <div className="hidden sm:block mt-12" />
       <h1 className="font-bold text-2xl">About Me</h1>
-      <hr className="my-4" />
+      <hr className="my-4 border-black dark:border-white" />
       <div className="text-sm prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200 max-w-full">
         <p>
           I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelors of Science in 
@@ -175,7 +175,7 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
           <GitHubIcon />
         </a>
       </div>
-      <hr className="my-3" />
+      <hr className="my-3 border-black dark:border-white" />
       <div className="flex flex-col gap-4">
         {projects.map((project) =>
           project.id % 2 === 0 ? (
@@ -403,7 +403,7 @@ function WorkExperienceSection() {
     <section id="work_experience">
       <div className="hidden sm:block mt-12" />
       <h1 className="font-bold text-2xl font-serif">Work Experience</h1>
-      <hr className="my-4" />
+      <hr className="my-4 border-black dark:border-white" />
       <div className="space-y-4">
         {experiences.map((experience) => (
           <WorkExperienceCard key={experience.id} experience={experience} />

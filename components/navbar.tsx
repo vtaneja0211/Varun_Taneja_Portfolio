@@ -49,7 +49,8 @@ export default function Navbar() {
 
   return (
     <div className="w-full flex justify-end font-mono">
-      <nav className="fixed top-0 left-0 right-0 px-4 py-3 bg-black/80 backdrop-blur-sm z-50 flex flex-wrap justify-center md:justify-end md:items-center md:space-x-10">
+      <nav className="fixed top-0 left-0 right-0 px-4 py-3 bg-neutral-300/90 dark:bg-black/80 backdrop-blur-sm z-50 flex flex-wrap justify-center md:justify-end md:items-center md:space-x-10">
+        <hr className="my-4 border-black dark:border-white" />
         {Object.entries(navItems).map(([path, { name }]) => (
           <Link
             to={path}
