@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 import { useState, useEffect } from "react";
 import { LayoutGroup, motion } from "framer-motion";
 import Image from "next/image";
-import me from "../app/headshot.png";
+import me from "../app/headshot2.jpg";
 export const name = "Varun Taneja";
 export const avatar = me;
 
