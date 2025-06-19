@@ -128,7 +128,7 @@ function AboutSection() {
       <hr className="my-4 border-black dark:border-white" />
       <div className="text-sm prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200 max-w-full">
         <p>
-          I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelors of Science in 
+          I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelor of Science in 
           <strong> Computer Engineering</strong> and a concentration in <strong>cybersecurity</strong> and <strong>AI</strong>.
         </p>
         <p>
