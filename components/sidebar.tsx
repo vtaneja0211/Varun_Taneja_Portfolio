@@ -255,7 +255,7 @@ export default function Navbar() {
             rel="noreferrer"
           >
             <img
-              src="./assembly.png"
+              src="./icons/assembly.png"
               width="36"
               height="36"
               alt="Assembly"
@@ -264,7 +264,7 @@ export default function Navbar() {
 
           <a href="https://www.verilog.com/" target="_blank" rel="noreferrer">
             <img
-              src="verilog.png"
+              src="./icons/verilog.png"
               width="36"
               height="36"
               alt="Verilog"
@@ -283,7 +283,7 @@ export default function Navbar() {
 
           <a href="https://www.anaconda.com/" target="_blank" rel="noreferrer">
             <img
-              src="./anaconda.png"
+              src="/icons/anaconda.png"
               width="36"
               height="36"
               alt="Anaconda"
@@ -292,7 +292,7 @@ export default function Navbar() {
 
           <a href="https://github.com/logisim-evolution/logisim-evolution" target="_blank" rel="noreferrer">
             <img
-              src="./logisim.png"
+              src="/icons/logisim.png"
               width="36"
               height="36"
               alt="Logisim Evolution"
@@ -301,7 +301,7 @@ export default function Navbar() {
 
           <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">
             <img
-              src="./pandas.png"
+              src="/icons/pandas.png"
               width="36"
               height="36"
               alt="Pandas"
@@ -310,7 +310,7 @@ export default function Navbar() {
 
           <a href="https://pytorch.org/" target="_blank" rel="noreferrer">
             <img
-              src="pytorch.png"
+              src="/icons/pytorch.png"
               width="36"
               height="36"
               alt="PyTorch"
@@ -319,7 +319,7 @@ export default function Navbar() {
 
           <a href="https://cloud.google.com/" target="_blank" rel="noreferrer">
             <img
-              src="./gcp.png"
+              src="/icons/gcp.png"
               width="36"
               height="36"
               alt="GCP"
@@ -328,7 +328,7 @@ export default function Navbar() {
 
           <a href="https://cloud.google.com/bigquery?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_665665924750-ADGP_Hybrid + %7C + BKWS + -MIX + %7C + Txt-Data + Analytics-BigQuery-KWID_43700077225652815-kwd-47616965283&utm_term=KW_bigquery-ST_bigquery&gad_source=1&gclid=Cj0KCQjwiuC2BhDSARIsALOVfBL7qDIuGSo0kak1Sssj5qXnjNmWzLKbn6Mple8J0f9Z7Ym1s9kMKvMaAhI7EALw_wcB&gclsrc=aw.ds" target="_blank" rel="noreferrer">
             <img
-              src="./bigquery.svg"
+              src="/icons/bigquery.svg"
               width="36"
               height="36"
               alt="BigQuery"
@@ -337,7 +337,7 @@ export default function Navbar() {
 
           <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noreferrer">
             <img
-              src="./vertexai.png"
+              src="/icons/vertexai.png"
               width="36"
               height="36"
               alt="Vertex AI"
@@ -346,7 +346,7 @@ export default function Navbar() {
 
           <a href="https://cloud.google.com/storage" target="_blank" rel="noreferrer">
             <img
-              src="./gcs.png"
+              src="/icons/gcs.png"
               width="36"
               height="36"
               alt="Google Cloud Storage"
@@ -355,7 +355,7 @@ export default function Navbar() {
 
           <a href="https://www.cadence.com/en_US/home/tools/custom-ic-analog-rf-design/layout-design/virtuoso-layout-suite.html" target="_blank" rel="noreferrer">
             <img
-              src="cadence.png"
+              src="/icons/cadence.png"
               width="36"
               height="36"
               alt="Cadence Virtuoso"
@@ -364,7 +364,7 @@ export default function Navbar() {
 
           <a href="https://www.ollydbg.de/" target="_blank" rel="noreferrer">
             <img
-              src="./ollydbg.png"
+              src="/icons/ollydbg.png"
               width="36"
               height="36"
               alt="OllyDbg"
@@ -373,7 +373,7 @@ export default function Navbar() {
 
           <a href="https://hex-rays.com/ida-pro/" target="_blank" rel="noreferrer">
             <img
-              src="./ida.png"
+              src="/icons/ida.png"
               width="36"
               height="36"
               alt="IDA Pro"
@@ -382,7 +382,7 @@ export default function Navbar() {
 
           <a href="https://matplotlib.org/" target="_blank" rel="noreferrer">
             <img
-              src="./matplotlib.png"
+              src="/icons/matplotlib.png"
               width="36"
               height="36"
               alt="MatPlotLib"
@@ -391,7 +391,7 @@ export default function Navbar() {
 
           <a href="https://scikit-learn.org/stable/" target="_blank" rel="noreferrer">
             <img
-              src="./sklearn.png"
+              src="/icons/sklearn.png"
               width="36"
               height="36"
               alt="Scikit-Learn"
