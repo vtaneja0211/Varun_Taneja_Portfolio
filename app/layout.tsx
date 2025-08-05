@@ -137,31 +137,38 @@ function AboutSection() {
       <hr className="my-4 border-black dark:border-white" />
       <div className="text-sm prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200 max-w-full">
         <p>
-          I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelor of Science in 
-          <strong> Computer Engineering</strong> and a concentration in <strong>cybersecurity</strong> and <strong>AI</strong>.
+          I am <strong>Varun Taneja</strong>, a recent graduate from the <strong>University of Notre Dame</strong> with a Bachelor of Science in{" "}
+          <strong>Computer Engineering</strong> and a concentration in <strong>cybersecurity</strong> and <strong>AI</strong>.
         </p>
         <p>
-          My diverse background, growing up in Singapore, has equipped me with the valuable skill of bridging cultural divides 
+          My diverse background, growing up in Singapore, has equipped me with the valuable skill of bridging cultural divides
           and connecting with individuals from various backgrounds.
         </p>
         <p>
-          At Notre Dame, I was the Vice President of the club golf team, where I played competitive golf and proudly represented our university 
-          at both regional and national levels. Golf has instilled in me the ability to confront and overcome adversity, teaching me to 
-          persevere through mentally challenging situations – a skill I consider invaluable in fast-paced environments.
+          At Notre Dame, I served as Vice President of the club golf team, representing the university in national tournaments.
+          Competitive golf taught me to manage pressure, adapt quickly, and stay mentally resilient—skills I’ve found just as useful
+          in fast-paced technical environments.
         </p>
         <p>
-          My two years of mandatory conscription in Singapore&apos;s armed forces further honed my teamwork and discipline, attributes I carried with 
-          me when I joined the club boxing team at Notre Dame. These qualities, along with my technical knowledge in software engineering, gained 
-          through coursework and hands-on experience at <strong>Vena Energy</strong> in <strong>Cloud Computing</strong>, <strong>Data Engineering</strong> at <strong>Partior</strong>
-          , and <strong>AI research</strong> at <strong>Notre Dame</strong>, are integral to my professional development.
+          I also completed two years of mandatory national service in Singapore, which strengthened my discipline and teamwork—
+          qualities I brought with me when I joined Notre Dame’s club boxing team.
         </p>
         <p>
-          I am currently interested in full-time positions. I am excited to contribute my unique background, 
-          technical expertise, and dedication to teamwork and discipline to your company&apos;s team.
+          Technically, I’ve built a strong foundation through hands-on experience in cloud computing at <strong>Vena Energy</strong>,
+          data engineering at <strong>Partior</strong>, and AI research at <strong>Notre Dame</strong>. These experiences, combined
+          with my academic training, have prepared me to tackle complex technical challenges with creativity and clarity.
         </p>
         <p>
-          Here is my<a href="/Varun_Taneja_Resume.pdf" download>
-            <button className="px-2 py-2 text-green-600 rounded"><strong>Resume</strong></button>
+          I’m currently seeking full-time opportunities where I can contribute both as an engineer and a teammate. I bring a unique
+          mix of global perspective, leadership experience, and technical depth—and I’m excited to apply it in building thoughtful,
+          high-impact technology.
+        </p>
+        <p>
+          Here is my{" "}
+          <a href="/Varun_Taneja_Resume.pdf" download>
+            <button className="px-2 py-2 text-green-600 rounded">
+              <strong>Resume</strong>
+            </button>
           </a>
         </p>
       </div>
