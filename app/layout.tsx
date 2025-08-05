@@ -25,7 +25,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: 7,
+    id: 8,
     title: "Beating the Bookmakers - NFL Game Binary Classification",
     description:
       "Co-led a data-driven NFL prediction project: assembled and cleaned a dataset of 3,593 games via the ESPN API, engineered features—including KNN-imputed missing values, rolling 3–5-game averages, and betting-market indicators—and evaluated seven machine-learning models (Naïve Bayes, Decision Tree, SVM, Random Forest, Neural Network, Gradient Boosting, XGBoost) plus a voting ensemble using stratified 5-fold cross-validation; XGBoost achieved top performance (precision 0.811, recall 0.853, accuracy 0.809, F1 0.831, AUC 0.884), and simulated betting strategies demonstrated a 12× bankroll increase with fixed stakes and a 3,544× return under reinvestment.",
@@ -34,12 +34,21 @@ const projects: Project[] = [
     websiteLink: "",
   },
   {
-    id: 6,
+    id: 7,
     title: "NavigAIte - An AI-Enabled Travel Planner",
     description:
       "Built a full-stack application augmented by AI to guide users through the travel planning process: conducted contextual inquiries with five users to map key pain points and define three AI-driven itinerary modes; designed a JSON-schema/chain-of-thought framework for LLM-based, on-demand personalized travel recommendations; and implemented a Next.js/React frontend alongside a Python backend integrating travel APIs with Llama-3.3-7b to generate real-time, budget-aware itineraries.",
     imageUrl: "/navigAIte.png",
     githubLink: "https://github.com/petermh12/navigAIte",
+    websiteLink: "",
+  },
+  {
+    id: 6,
+    title: "Fine-Tuning AI to Mimic My Texting Style",
+    description:
+      "Trained a language model using OpenAI’s fine-tuning API on a custom dataset of personal text messages to replicate conversational tone and habits. Preprocessed and tokenized chat data, formatted it into prompt-completion pairs, and fine-tuned GPT-3.5 and GPT-4o to generate responses aligned with personal texting patterns. Evaluated model outputs for tone consistency, response diversity, and contextual relevance to assess alignment with individual style.",
+    imageUrl: "/thumbnail.png",
+    githubLink: "https://github.com/vtaneja0211/fine_tuned_texting",
     websiteLink: "",
   },
   {
