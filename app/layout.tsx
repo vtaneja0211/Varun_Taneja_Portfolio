@@ -30,8 +30,8 @@ const projects: Project[] = [
     description:
       "Co-led a data-driven NFL prediction project: assembled and cleaned a dataset of 3,593 games via the ESPN API, engineered features—including KNN-imputed missing values, rolling 3–5-game averages, and betting-market indicators—and evaluated seven machine-learning models (Naïve Bayes, Decision Tree, SVM, Random Forest, Neural Network, Gradient Boosting, XGBoost) plus a voting ensemble using stratified 5-fold cross-validation; XGBoost achieved top performance (precision 0.811, recall 0.853, accuracy 0.809, F1 0.831, AUC 0.884), and simulated betting strategies demonstrated a 12× bankroll increase with fixed stakes and a 3,544× return under reinvestment.",
     imageUrl: "/nfl_predictor.png",
-    githubLink: "",
-    websiteLink: "",
+    githubLink: "https://github.com/AntonioKaram/BeatingTheBookmakers",
+    websiteLink: "https://drive.google.com/file/d/1c__bmzDASyL-XioSt0k3vQKCFFoq8tXr/view",
   },
   {
     id: 7,
