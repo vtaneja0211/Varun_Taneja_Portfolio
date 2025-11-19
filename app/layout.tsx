@@ -40,7 +40,7 @@ const projects: Project[] = [
       "Built a full-stack application augmented by AI to guide users through the travel planning process: conducted contextual inquiries with five users to map key pain points and define three AI-driven itinerary modes; designed a JSON-schema/chain-of-thought framework for LLM-based, on-demand personalized travel recommendations; and implemented a Next.js/React frontend alongside a Python backend integrating travel APIs with Llama-3.3-7b to generate real-time, budget-aware itineraries.",
     imageUrl: "/navigAIte.png",
     githubLink: "https://github.com/petermh12/navigAIte",
-    websiteLink: "",
+    websiteLink: "https://docs.google.com/presentation/d/1YuJMKt9eQjcpTKEgU4w0J2uwLBvMyfAO/edit?slide=id.p1#slide=id.p1",
   },
   {
     id: 6,
@@ -58,7 +58,7 @@ const projects: Project[] = [
       "Reverse-engineered Windows XP Freecell using IDA Pro and OllyDbg for dynamic and static analysis to locate card state memory. Implemented BFS, DFS, and A* search algorithms for optimal win strategies and built a Python GUI to guide users.",
     imageUrl: "/freecell.png",
     githubLink: "https://github.com/AntonioKaram/Freecell-AI-Solver",
-    websiteLink: "",
+    websiteLink: "https://drive.google.com/file/d/1IDUjCIZfACdZfAUUqpGrJCJtGphgBFVK/view",
   },
   {
     id: 4,
@@ -159,9 +159,7 @@ function AboutSection() {
           with my academic training, have prepared me to tackle complex technical challenges with creativity and clarity.
         </p>
         <p>
-          I’m currently seeking full-time opportunities where I can contribute both as an engineer and a teammate. I bring a unique
-          mix of global perspective, leadership experience, and technical depth—and I’m excited to apply it in building thoughtful,
-          high-impact technology.
+          I’m currently working full-time at <strong>Rowan</strong>  in Chicago as a Forward Deployed Engineer. We are trying to revoluitionize the world of SMB M&A using AI. Reach out to me if you would like to learn more!
         </p>
         <p>
           Here is my{" "}
