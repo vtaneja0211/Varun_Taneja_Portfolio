@@ -1,0 +1,252 @@
+import type { Project, WorkExperienceItem, NavItem, FilterCat } from "./types";
+
+export const PORTFOLIO_NAME = "Varun Taneja" as const;
+export const GITHUB_URL = "https://github.com/vtaneja0211" as const;
+
+export const NAV_ITEMS: Record<string, NavItem> = {
+  about: { name: "About" },
+  projects: { name: "Projects" },
+  work_experience: { name: "Experience" },
+};
+
+export const FILTER_CATS: FilterCat[] = [
+  { id: "all", label: "All" },
+  { id: "ai", label: "AI & ML" },
+  { id: "systems", label: "Systems" },
+  { id: "silicon", label: "Silicon" },
+  { id: "data", label: "Data & Web" },
+];
+
+export const PROJECTS: Project[] = [
+  {
+    id: 8,
+    title: "Beating the Bookmakers — NFL game classification",
+    description:
+      "Binary classification on 3,593 NFL games pulled from the ESPN API. Built the feature set — KNN-imputed missing values, rolling 3–5 game averages, betting-market indicators — then trained seven models plus a voting ensemble under stratified 5-fold cross-validation. XGBoost won. Simulated betting on held-out predictions returned 12× bankroll at fixed stakes, 3,544% with reinvestment.",
+    imageUrl: "/nfl_predictor.png",
+    imageAlt: "Table comparing accuracy, precision, recall, F1 and AUC across seven models",
+    imageCaption: "Model comparison across seven classifiers and the voting ensemble.",
+    category: "ai",
+    eyebrow: { category: "AI & ML", detail: "co-led · 2024" },
+    proof: { label: "Result", value: "0.884 AUC · 0.831 F1 · 12× bankroll on held-out games" },
+    tags: ["XGBoost", "scikit-learn", "Pandas", "ESPN API"],
+    githubLink: "https://github.com/AntonioKaram/BeatingTheBookmakers",
+    websiteLink: "https://drive.google.com/file/d/1c__bmzDASyL-XioSt0k3vQKCFFoq8tXr/view",
+    websiteLinkLabel: "Write-up",
+    hero: true,
+    heroWellCaption: "XGBoost · held-out",
+    heroMetrics: [
+      { value: "0.811", label: "Precision" },
+      { value: "0.853", label: "Recall" },
+      { value: "0.831", label: "F1" },
+      { value: "0.884", label: "AUC" },
+    ],
+    heroNote: "3,593 games · 7 models + ensemble · stratified 5-fold CV",
+  },
+  {
+    id: 7,
+    title: "NavigAIte — travel planning that asks first",
+    description:
+      "Ran contextual inquiries with five real travelers to find where planning breaks, then designed three itinerary modes around what I heard. Generation uses a JSON-schema and chain-of-thought framework so the model returns something the app can render. Next.js and React on top, Python and Llama-3.3-7b with live travel APIs behind.",
+    imageUrl: "/navigAIte.png",
+    imageAlt: "NavigAIte web app showing the trip planning start screen",
+    imageCaption: "NavigAIte — trip setup screen before itinerary generation.",
+    category: "ai data",
+    eyebrow: { category: "AI & ML", detail: "full-stack" },
+    proof: { label: "Method", value: "5 user interviews → 3 itinerary modes → schema-validated output" },
+    tags: ["Next.js", "React", "Python", "Llama 3.3"],
+    githubLink: "https://github.com/petermh12/navigAIte",
+    websiteLink: "https://docs.google.com/presentation/d/1YuJMKt9eQjcpTKEgU4w0J2uwLBvMyfAO/edit?slide=id.p1#slide=id.p1",
+    websiteLinkLabel: "Slides",
+  },
+  {
+    id: 6,
+    title: "Fine-tuning a model on my own texting",
+    description:
+      "Built a dataset from my personal message history, tokenized it into prompt–completion pairs, and fine-tuned GPT-3.5 and GPT-4o through the OpenAI API. Evaluated the outputs for tone consistency, response diversity and contextual relevance against how I actually write.",
+    imageUrl: "/thumbnail.png",
+    imageAlt: "Cover graphic for the texting-style fine-tuning project",
+    imageCaption: "Fine-Tuning AI to Mimic My Texting Style — project cover.",
+    category: "ai",
+    eyebrow: { category: "AI & ML", detail: "fine-tuning" },
+    proof: { label: "Pipeline", value: "Personal corpus → prompt/completion pairs → GPT-3.5 + GPT-4o" },
+    tags: ["OpenAI API", "Fine-tuning", "Python"],
+    githubLink: "https://github.com/vtaneja0211/fine_tuned_texting",
+  },
+  {
+    id: 5,
+    title: "Windows Freecell solver",
+    description:
+      "Reverse-engineered Windows XP Freecell with IDA Pro and OllyDbg — static and dynamic analysis to find where card state lived in memory — then implemented BFS, DFS and A* to search for winning lines, wrapped in a Python GUI that walks you through them.",
+    imageUrl: "/freecell.png",
+    imageAlt: "Freecell solver interface showing card positions and the next suggested move",
+    imageCaption: "Python GUI walking through a solved Freecell deal move by move.",
+    category: "systems",
+    eyebrow: { category: "Systems", detail: "reverse engineering" },
+    proof: { label: "Approach", value: "Located live card state in process memory · BFS / DFS / A*" },
+    tags: ["IDA Pro", "OllyDbg", "Python", "Search"],
+    githubLink: "https://github.com/AntonioKaram/Freecell-AI-Solver",
+    websiteLink: "https://drive.google.com/file/d/1IDUjCIZfACdZfAUUqpGrJCJtGphgBFVK/view",
+    websiteLinkLabel: "Demo",
+  },
+  {
+    id: 4,
+    title: "Operating systems from scratch",
+    description:
+      "Wrote a process scheduler supporting FIFO and round robin, a heap manager implementing malloc and calloc, and a Unix-style file system — all in C/C++, working directly with system calls, paging and multithreading.",
+    imageUrl: "/fs.gif",
+    imageAlt: "Terminal session running the filesystem tool on a disk image",
+    imageCaption: "Filesystem utility running against a test image over a shell session.",
+    category: "systems",
+    eyebrow: { category: "Systems", detail: "from scratch" },
+    proof: { label: "Scope", value: "Scheduler · allocator · filesystem — three subsystems in C/C++" },
+    tags: ["C / C++", "Paging", "Threads", "Syscalls"],
+  },
+  {
+    id: 3,
+    title: "Multithreaded HTTP client & pub/sub server",
+    description:
+      "A client issuing HTTP requests in parallel, and a publish–subscribe server supporting channels and persistent conversations — built in Python, Bash and C/C++ directly on sockets and system calls rather than a web framework.",
+    imageUrl: "/cliserv.png",
+    imageAlt: "Diagram of multiple clients connecting to publish-subscribe servers",
+    imageCaption: "Client and server topology for the publish–subscribe implementation.",
+    category: "systems",
+    eyebrow: { category: "Systems", detail: "networking" },
+    proof: { label: "Built on", value: "Raw sockets · no framework · concurrent clients" },
+    tags: ["C / C++", "Python", "Sockets", "Pub/Sub"],
+  },
+  {
+    id: 2,
+    title: "8-bit LFSR on GF180nm silicon",
+    description:
+      "Proposed, designed, verified and synthesized a linear-feedback shift register in Verilog for the Google-sponsored eFabless GF180nm open shuttle. It cleared both Multi-Project Wafer and tapeout checks — the design exists as actual silicon rather than a waveform.",
+    imageUrl: "/lfsr.png",
+    imageAlt: "Chip layout for the 8-bit linear feedback shift register",
+    imageCaption: "8-bit LFSR layout submitted to the eFabless GF180nm shuttle.",
+    category: "silicon",
+    eyebrow: { category: "Silicon", detail: "taped out" },
+    proof: { label: "Output", value: "Passed MPW + tapeout · fabricated on GF180nm" },
+    tags: ["Verilog", "eFabless", "GF180nm", "MPW"],
+    githubLink: "https://github.com/AntonioKaram/Final-Project-LFSR",
+    websiteLink: "https://repositories.efabless.com/akaram/nd-cool-ranch",
+    websiteLinkLabel: "Shuttle",
+  },
+  {
+    id: 1,
+    title: "Music & Happiness",
+    description:
+      "Joined Spotify listening trends by country against the World Happiness Index, education levels and GDP, then mapped how genre and artist preference track socioeconomic conditions across the world over time.",
+    imageUrl: "/music.jpg",
+    imageAlt: "World map shaded by the relationship between music trends and happiness index",
+    imageCaption: "Choropleth linking listening trends to happiness index by country.",
+    category: "data",
+    eyebrow: { category: "Data", detail: "analysis" },
+    proof: { label: "Dataset", value: "Spotify × happiness index × education × GDP, by country" },
+    tags: ["Pandas", "Spotify API", "Choropleth"],
+    githubLink: "https://github.com/AntonioKaram/MusicData",
+    websiteLink: "https://music-and-happiness.vercel.app/",
+    websiteLinkLabel: "Map",
+  },
+];
+
+export const EXPERIENCES: WorkExperienceItem[] = [
+  {
+    id: 1,
+    company: "Rowan",
+    role: "Full Stack AI Engineer",
+    link: "https://www.rowan.com/",
+    date: "Present · Chicago",
+    current: true,
+    tasks: [
+      "Architected a Slack-based deep research and company evaluation system using Python, React, Express, and external APIs, with automated buyer/target discovery and an LLM-as-judge framework scoring companies against banker-defined M&A criteria with human-in-the-loop validation.",
+      "Designed the React frontend around the M&A diligence backend, building client task assignment, notifications, dynamic financial intelligence visualizations, conversational chat, and platform-wide natural-language querying, with PostHog event instrumentation.",
+      "Rebuilt the company website in React, replacing an unmaintainable generated codebase with a structured frontend architecture and implementing SEO-focused page structure, metadata, and performance optimizations.",
+      "Engineered an automated sales intelligence pipeline integrating CRM APIs and scheduled processing to generate weekly rep priorities, pipes, and monthly founder reporting.",
+      "Built Python/OCR document intelligence pipelines to extract, normalize, and deduplicate inventory from scanned invoices, purchase orders, and handwritten job-site load lists, reconstructing synthetic inventory counts for M&A transaction verification.",
+      "Headed company-wide Claude Skills implementation, developing department-specific AI workflows for bankers and controllers and leading technical training and adoption.",
+      "Established CI/CD with GitHub Actions, Playwright smoke tests on Vercel previews, Render deployment gates, and automated code audits.",
+    ],
+  },
+  {
+    id: 2,
+    company: "Yes-Lab, University of Notre Dame",
+    role: "Undergraduate Research Assistant",
+    link: "http://yes-lab.org/",
+    date: "Research · Notre Dame",
+    tasks: [
+      `Collaborated on "Multi-objective Personalized Health-aware Food Recommendation System with LLM-enhanced Interpretation" project at Yes Lab at Notre Dame, culminating in a paper submission to the KDD 2025 ADS Track.`,
+      "Developed and implemented baseline models (NCGF and HAFR) using Python and PyTorch.",
+    ],
+  },
+  {
+    id: 3,
+    company: "Partior",
+    role: "Digital Intelligence Team Intern",
+    link: "https://www.partior.com/",
+    date: "Internship · Singapore",
+    tasks: [
+      "Completed Google Cloud Skills Boost: Introduction to Generative AI, leveraging Vertex AI for enterprise.",
+      "Generated realistic mock billing data with natural growth and ingested it into GCS for Looker Studio dashboards.",
+      "Conducted comprehensive analysis of prompting techniques—including zero-shot and prompt-chaining—to optimize business data retrieval methods.",
+      "Developed a Python program to extract business data from PDFs using Google's Gemini API and Vertex AI.",
+    ],
+  },
+  {
+    id: 4,
+    company: "Alcor Solutions Inc.",
+    role: "AWS Cloud & Development Intern",
+    link: "https://www.alcortech.com/",
+    date: "Internship · Remote",
+    tasks: [
+      "Reviewed AWS cloud application design documentation to ensure team was prepared for client meetings.",
+      "Responsible for writing coding standards in Python, Java, and Angular to guide the development team.",
+      "Identified and clarified any areas of confusion in both programming and design documentation.",
+    ],
+  },
+  {
+    id: 5,
+    company: "Vena Energy",
+    role: "Data Analytics & Programming Intern",
+    link: "https://www.venaenergy.com/",
+    date: "Internship · Singapore",
+    tasks: [
+      "Migrated code from Node.js to Python for SCADA data processing in wind and solar power plants.",
+      "Developed and deployed a real-time Python application that updated Google Firebase data every minute.",
+      "Created a Python script to archive long-term BigQuery data on GCP.",
+    ],
+  },
+  {
+    id: 6,
+    company: "Notre Dame CSE Department",
+    role: "Logic Design Teaching Assistant",
+    link: "https://cse.nd.edu/",
+    date: "Teaching",
+    tasks: [
+      "Facilitated student comprehension of Boolean algebra, Assembly language, Logisim and Verilog during office hours and studio sessions.",
+    ],
+  },
+  {
+    id: 7,
+    company: "Notre Dame Summer Programs",
+    role: "Introduction to Engineering Camp Counselor",
+    link: "https://iep.nd.edu/",
+    date: "Teaching",
+    tasks: [
+      "Collaborated with Professor Ramzi Bualuan to successfully manage the IEP Summer Camp at the University of Notre Dame.",
+      "Led the NXT Mindstorms robot project, teaching high school seniors programming concepts, including functions, loops, and Bluetooth connectivity using the NXC language.",
+      "Coordinated extracurricular activities for campers, working closely with fellow counselors to enhance the overall camp experience.",
+    ],
+  },
+  {
+    id: 8,
+    company: "Singapore Armed Forces",
+    role: "Guardroom In-Charge & Security Trooper",
+    link: "https://www.mindef.gov.sg/web/portal/mindef/home",
+    date: "National service · 2 yrs",
+    tasks: [
+      "Led guardroom operations alongside the Sergeant—managing SAR21 rifle issuance, camp clearances, and scheduling—earning promotion to Corporal.",
+      "Enforced military law by overseeing vehicle access and conducting systematic vehicle checks.",
+      "Streamlined entry processes by verifying identities and exchanging ID cards for camp passes.",
+    ],
+  },
+];
