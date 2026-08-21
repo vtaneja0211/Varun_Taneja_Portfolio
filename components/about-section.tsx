@@ -62,35 +62,6 @@ export default function AboutSection(): ReactNode {
           </a>
         </div>
 
-        <div className="ab-strip">
-          <div className="ab-fact">
-            <div className="k">Now</div>
-            <div className="v">
-              <b>Full Stack AI Engineer</b>
-              <br />
-              Rowan · Chicago
-            </div>
-          </div>
-          <div className="ab-fact">
-            <div className="k">Education</div>
-            <div className="v">
-              B.S. Computer Engineering
-              <br />
-              University of Notre Dame
-            </div>
-          </div>
-          <div className="ab-fact">
-            <div className="k">Concentration</div>
-            <div className="v">Cybersecurity &amp; AI</div>
-          </div>
-          <div className="ab-fact">
-            <div className="k">Roots</div>
-            <div className="v">
-              Singapore → Indiana
-              <br />→ Chicago
-            </div>
-          </div>
-        </div>
       </section>
     </>
   );
@@ -151,30 +122,12 @@ const STYLES = `
 .vt-about .ab-resume a:hover { border-bottom-color: var(--p-accent) }
 .vt-about .ab-resume a span { margin-left: 5px; font-size: 11px }
 
-/* fact strip */
-.vt-about .ab-strip {
-  display: flex; flex-wrap: wrap; margin-top: 34px;
-  border: 1px solid var(--p-line); border-radius: 4px; overflow: hidden; background: var(--p-surface);
-}
-.vt-about .ab-fact { flex: 1 1 158px; padding: 15px 18px; border-right: 1px solid var(--p-line) }
-.vt-about .ab-fact:last-child { border-right: 0 }
-.vt-about .ab-fact .k {
-  font-family: var(--p-mono); font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--p-dimmer); margin-bottom: 5px;
-}
-.vt-about .ab-fact .v { font-family: var(--p-mono); font-size: 12px; color: var(--p-text); line-height: 1.5 }
-.vt-about .ab-fact .v b { color: var(--p-accent); font-weight: 500 }
-
 /* responsive */
 @media (max-width: 820px) {
   .vt-about .ab-cols { grid-template-columns: 1fr; gap: 0 }
-  .vt-about .ab-fact { flex: 1 1 100%; border-right: 0; border-bottom: 1px solid var(--p-line) }
-  .vt-about .ab-fact:last-child { border-bottom: 0 }
 }
 @container (max-width: 680px) {
   .vt-about .ab-cols { grid-template-columns: 1fr; gap: 0 }
-  .vt-about .ab-fact { flex: 1 1 100%; border-right: 0; border-bottom: 1px solid var(--p-line) }
-  .vt-about .ab-fact:last-child { border-bottom: 0 }
 }
 @media (max-width: 560px) {
   .vt-about { font-size: 15px }

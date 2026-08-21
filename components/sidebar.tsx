@@ -183,14 +183,14 @@ const STYLES = `
   margin-bottom: 6px;
   color: var(--side-accent);
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: .14em;
   text-transform: uppercase;
 }
 .vt-profile h1 {
   margin: 0;
   color: var(--side-text);
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 600;
   letter-spacing: -.025em;
 }
@@ -198,7 +198,7 @@ const STYLES = `
   max-width: 270px;
   margin: 10px auto 0;
   color: var(--side-dim);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.65;
 }
@@ -222,13 +222,13 @@ const STYLES = `
 .vt-section-head h3 {
   margin: 0;
   color: var(--side-text);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
 }
 .vt-section-head span {
   color: var(--side-dimmer);
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 8px;
+  font-size: 9px;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
@@ -275,7 +275,7 @@ const STYLES = `
 }
 .vt-contact-links > a:last-child { border-bottom: 0 }
 .vt-contact-links > a:hover { color: var(--side-text); background: var(--side-raised) }
-.vt-contact-label { display: flex; align-items: center; gap: 10px; font-size: 11px }
+.vt-contact-label { display: flex; align-items: center; gap: 10px; font-size: 13px }
 .vt-contact-icon { display: grid; width: 22px; height: 22px; place-items: center }
 .vt-contact-icon svg { width: 19px; height: 19px }
 .vt-contact-links > a > svg { margin: 0; color: var(--side-accent) }
@@ -289,24 +289,25 @@ const STYLES = `
 .vt-contact-info dt {
   color: var(--side-accent);
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+.vt-info-label { font-size: 12px }
 .vt-contact-info > p {
-  margin: 8px 0 14px;
+  margin: 10px 0 18px;
   color: var(--side-dim);
-  font-size: 10.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  line-height: 1.6;
 }
-.vt-contact-info dl { display: grid; gap: 11px; margin: 0 }
-.vt-contact-info dt { margin-bottom: 3px }
+.vt-contact-info dl { display: grid; gap: 15px; margin: 0 }
+.vt-contact-info dt { margin-bottom: 5px }
 .vt-contact-info dd {
   margin: 0;
   color: var(--side-text);
   font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 9.5px;
-  line-height: 1.55;
+  font-size: 13px;
+  line-height: 1.65;
   overflow-wrap: anywhere;
 }
 
