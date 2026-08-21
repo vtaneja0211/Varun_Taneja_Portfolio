@@ -40,7 +40,6 @@ function ShotButton({
       data-cap={project.imageCaption}
       onClick={() => ref.current && onOpen(ref.current)}
     >
-      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={project.imageUrl} alt={project.imageAlt} loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
       <span className="vt-zoom">Expand</span>
     </button>
@@ -146,6 +145,12 @@ export default function ProjectsSection(): ReactNode {
   const lastFocusRef = useRef<HTMLButtonElement | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
+  const closeLightbox = useCallback(() => {
+    setLightbox(null);
+    document.body.style.overflow = "";
+    lastFocusRef.current?.focus();
+  }, []);
+
   /* scroll reveal */
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -175,7 +180,7 @@ export default function ProjectsSection(): ReactNode {
     const handler = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [lightbox]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [lightbox, closeLightbox]);
 
   const applyFilter = useCallback((cat: string) => {
     setActiveFilter(cat);
@@ -206,12 +211,6 @@ export default function ProjectsSection(): ReactNode {
     lastFocusRef.current = btn;
     setLightbox({ src: img.src, alt: img.alt, caption: btn.dataset.cap ?? "" });
     document.body.style.overflow = "hidden";
-  }, []);
-
-  const closeLightbox = useCallback(() => {
-    setLightbox(null);
-    document.body.style.overflow = "";
-    lastFocusRef.current?.focus();
   }, []);
 
   const matchingCount =
@@ -276,7 +275,6 @@ export default function ProjectsSection(): ReactNode {
             onClick={(e) => { if (e.target === e.currentTarget) closeLightbox(); }}
           >
             <button className="vt-lb-close" onClick={closeLightbox}>Close ×</button>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img className="vt-lb-img" src={lightbox.src} alt={lightbox.alt} />
             <p className="vt-lb-cap">{lightbox.caption}</p>
           </div>
