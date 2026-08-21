@@ -1,526 +1,328 @@
-"use client";
-import clsx from "clsx";
-import { Link } from "react-scroll";
-import { useState, useEffect } from "react";
-import { LayoutGroup, motion } from "framer-motion";
 import Image from "next/image";
-import me from "../app/headshot2.jpg";
-export const name = "Varun Taneja";
-export const avatar = me;
-
+import type { ReactNode } from "react";
+import me from "../assets/headshot2.jpg";
+import { PORTFOLIO_NAME } from "../lib/constants";
 import {
   ArrowIcon,
-  GitHubIcon,
-  Resume,
-  LinkedIN,
   Email,
-  PhoneIcon,
+  GitHubIcon,
+  LinkedIN,
+  SingaporeFlagIcon,
   USAFlagIcon,
-  SingaporeFlagIcon
 } from "./icons";
 
+const TOOLS = [
+  { name: "C", href: "https://docs.microsoft.com/en-us/cpp/?view=msvc-170", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/c-colored.svg" },
+  { name: "C++", href: "https://docs.microsoft.com/en-us/cpp/?view=msvc-170", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg" },
+  { name: "Git", href: "https://git-scm.com/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" },
+  { name: "Python", href: "https://www.python.org/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg" },
+  { name: "Java", href: "https://www.oracle.com/java/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg" },
+  { name: "HTML5", href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" },
+  { name: "CSS3", href: "https://www.w3.org/TR/CSS/#css", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" },
+  { name: "TypeScript", href: "https://www.typescriptlang.org/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" },
+  { name: "Next.js", href: "https://nextjs.org/docs", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg" },
+  { name: "React", href: "https://reactjs.org/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" },
+  { name: "Bootstrap", href: "https://getbootstrap.com/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg" },
+  { name: "Tailwind CSS", href: "https://tailwindcss.com/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" },
+  { name: "PHP", href: "https://www.php.net/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg" },
+  { name: "Firebase", href: "https://firebase.google.com/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg" },
+  { name: "AWS", href: "https://aws.amazon.com/", src: "https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+  { name: "Bash", href: "https://www.gnu.org/software/bash/", src: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg" },
+  { name: "Assembly", href: "https://www.ibm.com/docs/en/zos/2.1.0?topic=introduction-assembler-language", src: "/icons/assembly.png" },
+  { name: "Verilog", href: "https://www.verilog.com/", src: "/icons/verilog.png" },
+  { name: "Figma", href: "https://www.figma.com/", src: "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg" },
+  { name: "Anaconda", href: "https://www.anaconda.com/", src: "/icons/anaconda.png" },
+  { name: "Logisim Evolution", href: "https://github.com/logisim-evolution/logisim-evolution", src: "/icons/logisim.png" },
+  { name: "Pandas", href: "https://pandas.pydata.org/", src: "/icons/pandas.png" },
+  { name: "PyTorch", href: "https://pytorch.org/", src: "/icons/pytorch.png" },
+  { name: "Google Cloud", href: "https://cloud.google.com/", src: "/icons/gcp.png" },
+  { name: "BigQuery", href: "https://cloud.google.com/bigquery", src: "/icons/bigquery.svg" },
+  { name: "Vertex AI", href: "https://cloud.google.com/vertex-ai", src: "/icons/vertexai.png" },
+  { name: "Google Cloud Storage", href: "https://cloud.google.com/storage", src: "/icons/gcs.png" },
+  { name: "Cadence Virtuoso", href: "https://www.cadence.com/en_US/home/tools/custom-ic-analog-rf-design/layout-design/virtuoso-layout-suite.html", src: "/icons/cadence.png" },
+  { name: "OllyDbg", href: "https://www.ollydbg.de/", src: "/icons/ollydbg.png" },
+  { name: "IDA Pro", href: "https://hex-rays.com/ida-pro/", src: "/icons/ida.png" },
+  { name: "Matplotlib", href: "https://matplotlib.org/", src: "/icons/matplotlib.png" },
+  { name: "scikit-learn", href: "https://scikit-learn.org/stable/", src: "/icons/sklearn.png" },
+] as const;
 
-export default function Navbar() {
+const CONTACT_LINKS = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/varuntaneja7/", icon: <LinkedIN /> },
+  { label: "GitHub", href: "https://github.com/vtaneja0211", icon: <GitHubIcon /> },
+  { label: "USA Phone", href: "tel:+12694798385", icon: <USAFlagIcon /> },
+  { label: "Singapore Phone", href: "tel:+6597572510", icon: <SingaporeFlagIcon /> },
+  { label: "Email", href: "mailto:varuntaneja0211@gmail.com", icon: <Email /> },
+] as const;
+
+export default function Sidebar(): ReactNode {
   return (
-    <aside className="flex flex-col w-full md:max-w-[400px] pb-20 md:pb-96 pr-0 md:pr-5 md:flex-shrink-0 mx-0 md:mx-0 font-mono border-b-2 md:border-b-0 md:border-r-2 border-green-600 justify-start items-center">
-      <div className="flex flex-col items-center justify-center mt-16 md:mt-0">
-        <div className="w-32 h-32 md:w-48 md:h-48">
-          <Image
-            alt={name}
-            className="rounded-full border border-gray-500 w-full h-full object-cover"
-            src={avatar}
-            placeholder="blur"
-            width={200}
-            height={200}
-            priority
-          />
-        </div>
-        <div>
-          <h1 className="text-xl md:text-2xl py-3 text-neutral-800 dark:text-neutral-200 text-center">{name}</h1>
-        </div>
-      </div>
-
-      <section id="bio" className="px-4 md:px-0">
-        <h2 className="text-center my-5 max-w-[700px] text-sm md:text-base text-neutral-800 dark:text-neutral-200">
-          Recently Graduated Computer Engineer from the University of Notre Dame.
-        </h2>
-      </section>
-
-      <section className="w-full md:w-[200px] mt-8 md:mt-0 ml-0">
-        <h3 className="text-center text-base text-neutral-800 dark:text-neutral-200 mb-4">Languages & Tools</h3>
-        <div className="grid grid-cols-4 md:grid-cols-4 gap-4 md:gap-2 place-items-center transition-all justify-between items-center auto-cols-max px-4 md:px-0">
-          <a
-            href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/c-colored.svg"
-              width="36"
-              height="36"
-              alt="C"
+    <>
+      <style>{STYLES}</style>
+      <aside className="vt-sidebar">
+        <div className="vt-profile">
+          <div className="vt-avatar-wrap">
+            <Image
+              alt={PORTFOLIO_NAME}
+              className="vt-avatar"
+              src={me}
+              placeholder="blur"
+              width={200}
+              height={200}
+              priority
             />
-          </a>
-
-          <a
-            href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg"
-              width="36"
-              height="36"
-              alt="C++"
-            />
-          </a>
-
-          <a href="https://git-scm.com/" target="_blank" rel="noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg"
-              width="36"
-              height="36"
-              alt="Git"
-            />
-          </a>
-
-          <a href="https://www.python.org/" target="_blank" rel="noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg"
-              width="36"
-              height="36"
-              alt="Python"
-            />
-          </a>
-
-          <a
-            href="https://www.oracle.com/java/"
-            target="_blank"
-            rel="noreferrer"
-            className="pb-2"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg"
-              width="45"
-              height="45"
-              alt="Java"
-            />
-          </a>
-
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg"
-              width="36"
-              height="36"
-              alt="HTML5"
-            />
-          </a>
-
-          <a
-            href="https://www.w3.org/TR/CSS/#css"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg"
-              width="36"
-              height="36"
-              alt="CSS3"
-            />
-          </a>
-
-          <a
-            href="https://www.typescriptlang.org/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg"
-              width="36"
-              height="36"
-              alt="TypeScript"
-            />
-          </a>
-
-          <a
-            href="https://nextjs.org/docs"
-            target="_blank"
-            rel="noreferrer"
-            className="flex p-0.5 dark:rounded-full no-underline items-center text-neutral-800 dark:bg-neutral-100 "
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg"
-              width="36"
-              height="36"
-              alt="NextJs"
-            />
-          </a>
-
-          <a
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noreferrer"
-            className="pd-2"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg"
-              width="36"
-              height="36"
-              alt="React"
-            />
-          </a>
-
-          <a
-            href="https://getbootstrap.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg"
-              width="36"
-              height="36"
-              alt="Bootstrap"
-            />
-          </a>
-
-          <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg"
-              width="36"
-              height="36"
-              alt="TailwindCSS"
-            />
-          </a>
-
-          <a href="https://www.php.net/" target="_blank" rel="noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/php-colored.svg"
-              width="50"
-              height="50"
-              alt="PHP"
-            />
-          </a>
-
-          <a
-            href="https://firebase.google.com/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/firebase-colored.svg"
-              width="36"
-              height="36"
-              alt="Firebase"
-            />
-          </a>
-
-          <a href="https://aws.amazon.com/" target="_blank" rel="noreferrer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 48"
-              width="36"
-              height="36"
-            >
-              <path
-                className="fill-[#252f3e] dark:fill-[#FFFFFF]"
-                d="M13.527,21.529c0,0.597,0.064,1.08,0.176,1.435c0.128,0.355,0.287,0.742,0.511,1.161 c0.08,0.129,0.112,0.258,0.112,0.371c0,0.161-0.096,0.322-0.303,0.484l-1.006,0.677c-0.144,0.097-0.287,0.145-0.415,0.145 c-0.16,0-0.319-0.081-0.479-0.226c-0.224-0.242-0.415-0.5-0.575-0.758c-0.16-0.274-0.319-0.58-0.495-0.951 c-1.245,1.483-2.81,2.225-4.694,2.225c-1.341,0-2.411-0.387-3.193-1.161s-1.181-1.806-1.181-3.096c0-1.37,0.479-2.483,1.453-3.321 s2.267-1.258,3.911-1.258c0.543,0,1.102,0.048,1.692,0.129s1.197,0.21,1.836,0.355v-1.177c0-1.225-0.255-2.08-0.75-2.58 c-0.511-0.5-1.373-0.742-2.602-0.742c-0.559,0-1.133,0.064-1.724,0.21c-0.591,0.145-1.165,0.322-1.724,0.548 c-0.255,0.113-0.447,0.177-0.559,0.21c-0.112,0.032-0.192,0.048-0.255,0.048c-0.224,0-0.335-0.161-0.335-0.5v-0.79 c0-0.258,0.032-0.451,0.112-0.564c0.08-0.113,0.224-0.226,0.447-0.339c0.559-0.29,1.229-0.532,2.012-0.726 c0.782-0.21,1.612-0.306,2.49-0.306c1.9,0,3.289,0.435,4.183,1.306c0.878,0.871,1.325,2.193,1.325,3.966v5.224H13.527z M7.045,23.979c0.527,0,1.07-0.097,1.644-0.29c0.575-0.193,1.086-0.548,1.517-1.032c0.255-0.306,0.447-0.645,0.543-1.032 c0.096-0.387,0.16-0.855,0.16-1.403v-0.677c-0.463-0.113-0.958-0.21-1.469-0.274c-0.511-0.064-1.006-0.097-1.501-0.097 c-1.07,0-1.852,0.21-2.379,0.645s-0.782,1.048-0.782,1.854c0,0.758,0.192,1.322,0.591,1.709 C5.752,23.786,6.311,23.979,7.045,23.979z M19.865,25.721c-0.287,0-0.479-0.048-0.607-0.161c-0.128-0.097-0.239-0.322-0.335-0.629 l-3.752-12.463c-0.096-0.322-0.144-0.532-0.144-0.645c0-0.258,0.128-0.403,0.383-0.403h1.565c0.303,0,0.511,0.048,0.623,0.161 c0.128,0.097,0.223,0.322,0.319,0.629l2.682,10.674l2.49-10.674c0.08-0.322,0.176-0.532,0.303-0.629 c0.128-0.097,0.351-0.161,0.639-0.161h1.277c0.303,0,0.511,0.048,0.639,0.161c0.128,0.097,0.239,0.322,0.303,0.629l2.522,10.803 l2.762-10.803c0.096-0.322,0.208-0.532,0.319-0.629c0.128-0.097,0.335-0.161,0.623-0.161h1.485c0.255,0,0.399,0.129,0.399,0.403 c0,0.081-0.016,0.161-0.032,0.258s-0.048,0.226-0.112,0.403l-3.847,12.463c-0.096,0.322-0.208,0.532-0.335,0.629 s-0.335,0.161-0.607,0.161h-1.373c-0.303,0-0.511-0.048-0.639-0.161c-0.128-0.113-0.239-0.322-0.303-0.645l-2.474-10.4 L22.18,24.915c-0.08,0.322-0.176,0.532-0.303,0.645c-0.128,0.113-0.351,0.161-0.639,0.161H19.865z M40.379,26.156 c-0.83,0-1.66-0.097-2.458-0.29c-0.798-0.193-1.421-0.403-1.836-0.645c-0.255-0.145-0.431-0.306-0.495-0.451 c-0.064-0.145-0.096-0.306-0.096-0.451v-0.822c0-0.339,0.128-0.5,0.367-0.5c0.096,0,0.192,0.016,0.287,0.048 c0.096,0.032,0.239,0.097,0.399,0.161c0.543,0.242,1.133,0.435,1.756,0.564c0.639,0.129,1.261,0.193,1.9,0.193 c1.006,0,1.788-0.177,2.331-0.532c0.543-0.355,0.83-0.871,0.83-1.532c0-0.451-0.144-0.822-0.431-1.129 c-0.287-0.306-0.83-0.58-1.612-0.838l-2.315-0.726c-1.165-0.371-2.027-0.919-2.554-1.645c-0.527-0.709-0.798-1.499-0.798-2.338 c0-0.677,0.144-1.274,0.431-1.79s0.671-0.967,1.149-1.322c0.479-0.371,1.022-0.645,1.66-0.838C39.533,11.081,40.203,11,40.906,11 c0.351,0,0.718,0.016,1.07,0.064c0.367,0.048,0.702,0.113,1.038,0.177c0.319,0.081,0.623,0.161,0.91,0.258s0.511,0.193,0.671,0.29 c0.224,0.129,0.383,0.258,0.479,0.403c0.096,0.129,0.144,0.306,0.144,0.532v0.758c0,0.339-0.128,0.516-0.367,0.516 c-0.128,0-0.335-0.064-0.607-0.193c-0.91-0.419-1.932-0.629-3.065-0.629c-0.91,0-1.628,0.145-2.123,0.451 c-0.495,0.306-0.75,0.774-0.75,1.435c0,0.451,0.16,0.838,0.479,1.145c0.319,0.306,0.91,0.613,1.756,0.887l2.267,0.726 c1.149,0.371,1.98,0.887,2.474,1.548s0.734,1.419,0.734,2.257c0,0.693-0.144,1.322-0.415,1.87 c-0.287,0.548-0.671,1.032-1.165,1.419c-0.495,0.403-1.086,0.693-1.772,0.903C41.943,26.043,41.193,26.156,40.379,26.156z"
-              />
-              <path
-                className="fill-[#f90]"
-                d="M43.396,33.992c-5.252,3.918-12.883,5.998-19.445,5.998c-9.195,0-17.481-3.434-23.739-9.142 c-0.495-0.451-0.048-1.064,0.543-0.709c6.769,3.966,15.118,6.369,23.755,6.369c5.827,0,12.229-1.225,18.119-3.741 C43.508,32.364,44.258,33.347,43.396,33.992z M45.583,31.477c-0.671-0.871-4.438-0.419-6.146-0.21 c-0.511,0.064-0.591-0.387-0.128-0.726c3.001-2.128,7.934-1.516,8.509-0.806c0.575,0.726-0.16,5.708-2.969,8.094 c-0.431,0.371-0.846,0.177-0.655-0.306C44.833,35.927,46.254,32.331,45.583,31.477z"
-              />
-            </svg>
-          </a>
-
-          <a
-            href="https://www.gnu.org/software/bash/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Bash_Logo_Colored.svg"
-              width="36"
-              height="36"
-              alt="Bash Shell"
-            />
-          </a>
-
-          <a
-            href="https://www.ibm.com/docs/en/zos/2.1.0?topic=introduction-assembler-language"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <img
-              src="./icons/assembly.png"
-              width="36"
-              height="36"
-              alt="Assembly"
-            />
-          </a>
-
-          <a href="https://www.verilog.com/" target="_blank" rel="noreferrer">
-            <img
-              src="./icons/verilog.png"
-              width="36"
-              height="36"
-              alt="Verilog"
-              className="dark:fill-[#c28c3a] fill-black"
-            />
-          </a>
-
-          <a href="https://www.figma.com/" target="_blank" rel="noreferrer">
-            <img
-              src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg"
-              width="36"
-              height="36"
-              alt="Figma"
-            />
-          </a>
-
-          <a href="https://www.anaconda.com/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/anaconda.png"
-              width="36"
-              height="36"
-              alt="Anaconda"
-            />
-          </a>
-
-          <a href="https://github.com/logisim-evolution/logisim-evolution" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/logisim.png"
-              width="36"
-              height="36"
-              alt="Logisim Evolution"
-            />
-          </a>
-
-          <a href="https://pandas.pydata.org/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/pandas.png"
-              width="36"
-              height="36"
-              alt="Pandas"
-            />
-          </a>
-
-          <a href="https://pytorch.org/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/pytorch.png"
-              width="36"
-              height="36"
-              alt="PyTorch"
-            />
-          </a>
-
-          <a href="https://cloud.google.com/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/gcp.png"
-              width="36"
-              height="36"
-              alt="GCP"
-            />
-          </a>
-
-          <a href="https://cloud.google.com/bigquery?utm_source=google&utm_medium=cpc&utm_campaign=na-US-all-en-dr-bkws-all-all-trial-e-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_665665924750-ADGP_Hybrid + %7C + BKWS + -MIX + %7C + Txt-Data + Analytics-BigQuery-KWID_43700077225652815-kwd-47616965283&utm_term=KW_bigquery-ST_bigquery&gad_source=1&gclid=Cj0KCQjwiuC2BhDSARIsALOVfBL7qDIuGSo0kak1Sssj5qXnjNmWzLKbn6Mple8J0f9Z7Ym1s9kMKvMaAhI7EALw_wcB&gclsrc=aw.ds" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/bigquery.svg"
-              width="36"
-              height="36"
-              alt="BigQuery"
-            />
-          </a>
-
-          <a href="https://cloud.google.com/vertex-ai" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/vertexai.png"
-              width="36"
-              height="36"
-              alt="Vertex AI"
-            />
-          </a>
-
-          <a href="https://cloud.google.com/storage" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/gcs.png"
-              width="36"
-              height="36"
-              alt="Google Cloud Storage"
-            />
-          </a>
-
-          <a href="https://www.cadence.com/en_US/home/tools/custom-ic-analog-rf-design/layout-design/virtuoso-layout-suite.html" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/cadence.png"
-              width="36"
-              height="36"
-              alt="Cadence Virtuoso"
-            />
-          </a>
-
-          <a href="https://www.ollydbg.de/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/ollydbg.png"
-              width="36"
-              height="36"
-              alt="OllyDbg"
-            />
-          </a>
-
-          <a href="https://hex-rays.com/ida-pro/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/ida.png"
-              width="36"
-              height="36"
-              alt="IDA Pro"
-            />
-          </a>
-
-          <a href="https://matplotlib.org/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/matplotlib.png"
-              width="36"
-              height="36"
-              alt="MatPlotLib"
-            />
-          </a>
-
-          <a href="https://scikit-learn.org/stable/" target="_blank" rel="noreferrer">
-            <img
-              src="/icons/sklearn.png"
-              width="36"
-              height="36"
-              alt="Scikit-Learn"
-            />
-          </a>
-
-        </div>
-      </section>
-
-
-      <section id="contact" className="min-h-screen max-w-[400px]">
-        <div className="hidden sm:block">
-        </div>
-        <br />
-        <br />
-        <h1 className="text-xl">Contact Me</h1>
-        <br />
-        <hr className="border-black dark:border-white" />
-        <div className="hidden sm:block">
-          <br />
+            <span className="vt-profile-dot" aria-hidden="true" />
+          </div>
+          <div className="vt-profile-label">Profile</div>
+          <h1>{PORTFOLIO_NAME}</h1>
+          <section id="bio">
+            <h2>Full Stack AI Engineer at Rowan</h2>
+          </section>
         </div>
 
-        <div className="mt-3 flex flex-col">
-          <div className="flex-1">
-            <div className="flex flex-col gap-2 md:gap-2 max-w-[400px] h-full">
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://www.linkedin.com/in/varuntaneja7/"
-                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-              >
-                <div className="flex items-center">
-                  <LinkedIN />
-                  <div className="ml-3 text-sm">LinkedIn</div>
-                </div>
-                <ArrowIcon />
+        <section className="vt-tools" aria-labelledby="tools-title">
+          <div className="vt-section-head">
+            <h3 id="tools-title">Languages &amp; Tools</h3>
+            <span>{TOOLS.length}</span>
+          </div>
+          <div className="vt-tool-grid">
+            {TOOLS.map((tool) => (
+              <a key={tool.name} href={tool.href} target="_blank" rel="noreferrer" title={tool.name}>
+                <img src={tool.src} width="36" height="36" alt={tool.name} loading="lazy" />
               </a>
+            ))}
+          </div>
+        </section>
 
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://github.com/vtaneja0211"
-                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-              >
-                <div className="flex items-center">
-                  <GitHubIcon />
-                  <div className="ml-3 text-sm">GitHub</div>
-                </div>
-                <ArrowIcon />
-              </a>
-
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="tel:+12694798385"
-                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-              >
-                <div className="flex items-center">
-                  <USAFlagIcon />
-                  <div className="ml-3 text-sm">USA Phone</div>
-                </div>
-                <ArrowIcon />
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="tel:+6597572510"
-                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-              >
-                <div className="flex items-center">
-                  <SingaporeFlagIcon />
-                  <div className="ml-3 text-sm"> Singapore Phone</div>
-                </div>
-                <ArrowIcon />
-              </a>
-
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="mailto:varuntaneja0211@gmail.com"
-                className="flex h-full w-full border border-black dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
-                download
-              >
-                <div className="flex items-center">
-                  <Email />
-                  <div className="ml-3 text-sm">Email</div>
-                </div>
-                <ArrowIcon />
-              </a>
-            </div>
+        <section id="contact" className="vt-contact" aria-labelledby="contact-title">
+          <div className="vt-section-head">
+            <h3 id="contact-title">Contact Me</h3>
+            <span>Open</span>
           </div>
 
-          <div className="flex-1 mt-8">
-            <div className="dark:bg-neutral-100 bg-[#121212] overflow-hidden shadow-sm rounded-lg">
-              <div className="py-5 sm:p-6 px-4">
-                <h3 className="text-lg leading-6 font-bold text-neutral-100 dark:text-[#121212]">
-                  Contact Information
-                </h3>
-                <div className="mt-4">
-                  <p className="text-base leading-6 text-neutral-100 dark:text-gray-500">
-                    Reach out to me using the contact information below.
-                  </p>
-                  <div className="mt-4">
-                    <p className="text-sm leading-5 font-bold text-neutral-100 dark:text-gray-900">
-                      Email:
-                    </p>
-                    <p className="mt-1 text-sm leading-5 text-neutral-100 dark:text-gray-500">
-                      varuntaneja0211@gmail.com
-                    </p>
-                  </div>
-                  <div className="mt-4">
-                    <p className="text-sm leading-5 font-bold text-neutral-100 dark:text-gray-900">
-                      Phone:
-                    </p>
-                    <p className="mt-1 text-sm leading-5 text-neutral-100 dark:text-gray-500">
-                      USA: +1 (269) 479-8385 <br></br>
-                      Singapore: +65 97572510
-                    </p>
-                  </div>
-                </div>
+          <div className="vt-contact-links">
+            {CONTACT_LINKS.map((link) => (
+              <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+                <span className="vt-contact-label">
+                  <span className="vt-contact-icon">{link.icon}</span>
+                  {link.label}
+                </span>
+                <ArrowIcon />
+              </a>
+            ))}
+          </div>
+
+          <div className="vt-contact-info">
+            <div className="vt-info-label">Contact Information</div>
+            <p>Reach out to me using the contact information below.</p>
+            <dl>
+              <div>
+                <dt>Email</dt>
+                <dd>varuntaneja0211@gmail.com</dd>
               </div>
-            </div>
+              <div>
+                <dt>Phone</dt>
+                <dd>USA: +1 (269) 479-8385<br />Singapore: +65 97572510</dd>
+              </div>
+            </dl>
           </div>
-        </div>
-      </section>
-
-
-
-    </aside>
-
+        </section>
+      </aside>
+    </>
   );
 }
+
+const STYLES = `
+.vt-sidebar {
+  --side-bg: #0A0A0A;
+  --side-surface: #16181A;
+  --side-raised: #1C1F21;
+  --side-line: #262A2C;
+  --side-line-2: #343A3C;
+  --side-text: #D9DEDD;
+  --side-dim: #8A9391;
+  --side-dimmer: #626C6B;
+  --side-accent: #4ADE80;
+  width: 100%;
+  padding: 24px 0 64px;
+  color: var(--side-text);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+.vt-sidebar * { box-sizing: border-box }
+.vt-sidebar a { color: inherit }
+
+.vt-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.vt-avatar-wrap { position: relative; margin-bottom: 18px }
+.vt-avatar {
+  width: 148px;
+  height: 148px;
+  border: 1px solid var(--side-line-2);
+  border-radius: 50%;
+  object-fit: cover;
+  filter: saturate(.85) contrast(1.03);
+  box-shadow: 0 0 0 7px var(--side-bg), 0 0 0 8px var(--side-line);
+}
+.vt-profile-dot {
+  position: absolute;
+  right: 8px;
+  bottom: 9px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid var(--side-bg);
+  border-radius: 50%;
+  background: var(--side-accent);
+}
+.vt-profile-label {
+  margin-bottom: 6px;
+  color: var(--side-accent);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.vt-profile h1 {
+  margin: 0;
+  color: var(--side-text);
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -.025em;
+}
+.vt-profile h2 {
+  max-width: 270px;
+  margin: 10px auto 0;
+  color: var(--side-dim);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.vt-tools,
+.vt-contact {
+  margin-top: 10px;
+  border: 1px solid var(--side-line);
+  border-radius: 4px;
+  background: var(--side-surface);
+  overflow: hidden;
+}
+.vt-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--side-line);
+}
+.vt-section-head h3 {
+  margin: 0;
+  color: var(--side-text);
+  font-size: 15px;
+  font-weight: 600;
+}
+.vt-section-head span {
+  color: var(--side-dimmer);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.vt-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  padding: 12px;
+}
+.vt-tool-grid a {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  min-width: 0;
+  border: 1px solid var(--side-line);
+  border-radius: 3px;
+  background: var(--side-bg);
+  transition: border-color .18s ease, background .18s ease, transform .18s ease;
+}
+.vt-tool-grid a:hover {
+  border-color: var(--side-line-2);
+  background: var(--side-raised);
+  transform: translateY(-1px);
+}
+.vt-tool-grid img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.vt-contact-links { padding: 10px }
+.vt-contact-links > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--side-line);
+  color: var(--side-dim);
+  text-decoration: none;
+  transition: color .18s ease, background .18s ease;
+}
+.vt-contact-links > a:last-child { border-bottom: 0 }
+.vt-contact-links > a:hover { color: var(--side-text); background: var(--side-raised) }
+.vt-contact-label { display: flex; align-items: center; gap: 10px; font-size: 13px }
+.vt-contact-icon { display: grid; width: 22px; height: 22px; place-items: center }
+.vt-contact-icon svg { width: 19px; height: 19px }
+.vt-contact-links > a > svg { margin: 0; color: var(--side-accent) }
+
+.vt-contact-info {
+  padding: 16px;
+  border-top: 1px solid var(--side-line);
+  background: var(--side-bg);
+}
+.vt-info-label,
+.vt-contact-info dt {
+  color: var(--side-accent);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.vt-info-label { font-size: 12px }
+.vt-contact-info > p {
+  margin: 10px 0 18px;
+  color: var(--side-dim);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.vt-contact-info dl { display: grid; gap: 15px; margin: 0 }
+.vt-contact-info dt { margin-bottom: 5px }
+.vt-contact-info dd {
+  margin: 0;
+  color: var(--side-text);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.vt-sidebar :focus-visible { outline: 2px solid var(--side-accent); outline-offset: 2px }
+
+@media (min-width: 768px) {
+  .vt-sidebar {
+    width: 360px;
+    flex: 0 0 360px;
+    padding: 0 20px 220px 0;
+    border-right: 1px solid var(--side-line);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vt-sidebar * { transition-duration: .01ms !important }
+}
+`;
